@@ -1,9 +1,10 @@
 # zego_call_flutter
 
-使用ZEGO SDK实现的在线/离线呼叫
+Online/Offline call implemented using ZEGO SDK
 
-# 代码解析
-## 代码结构:
+# Code
+
+## Structure:
 ```
 ├── main.dart
 ├── logger.dart
