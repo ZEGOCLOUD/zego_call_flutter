@@ -1,4 +1,7 @@
+/// How to resource id(a resource identifier used for configuring offline call invitations.)
+///
 const offlineResourceID = "zego_data";
+
 const androidChannelID = 'zego_offline_call';
 const androidChannelName = 'zego offline call';
 const androidIconName = 'call';
