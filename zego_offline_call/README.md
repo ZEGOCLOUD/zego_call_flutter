@@ -10,6 +10,7 @@ Online/Offline call implemented using ZEGO SDK
  - Go to [ZEGOCLOUD Admin Console](https://console.zegocloud.com/) to create a UIKit project.
  - Get the `AppID` and `AppSign` of the project
  - Config `yourSecretID` and `yourSecretAppSign` in **zego_offline_call/lib/app/constants.dart**
+ - Config `offlineResourceID` in **zego_offline_call/lib/call/constants.dart**, which get from next chapter
 
 ## Config offline call
 
