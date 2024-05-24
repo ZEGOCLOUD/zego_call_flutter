@@ -31,11 +31,12 @@ Online/Offline call implemented using ZEGO SDK
  - Go to [ZEGOCLOUD Admin Console](https://console.zegocloud.com/) to create a UIKit project.
  - Get the `AppID` and `AppSign` of the project
  - Config `yourSecretID` and `yourSecretAppSign` in **zego_offline_call/lib/app/constants.dart**
- - Config `offlineResourceID` in **zego_offline_call/lib/call/constants.dart**, which get from next chapter
 
 ## Config offline call
 
 If you encounter configuration issues, please consult our technical support or refer to this [article](https://www.zegocloud.com/docs/uikit/callkit-flutter/quick-start-(with-call-invitation))
+
+> When you get the resource id from the following steps, you should configure it to `offlineResourceID` in **zego_offline_call/lib/call/constants.dart**
 
 - android
   
