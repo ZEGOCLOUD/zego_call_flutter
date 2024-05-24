@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant A
+    participant ZPNs
+    participant ZIM
+    participant B
+    participant App
+    B->>ZPNs: ZPNs.setBackgroundMessageHandler(onBackgroundMessageReceived)
+    A->>B: callinvite with pushConfig(protocol with config.extendedData)
+    ZPNs->>B: onBackgroundMessageReceived(message)
+    B->>B: Parse message extras[payload] as protocol
+    B->>B: Display call invitation popup
+    B->>ZIM: ZIM.create()
+    B->>ZIM: ZIM.getInstance()!.login()
+    B->>ZPNs: ZPNs.setPushConfig()
+    B->>ZPNs: ZPNs.getInstance().registerPush()
+    A->>B: callCancel
+    ZIM->>B: ZIMEventHandler.onCallInvitationCancelled
+    B->>B: Close call invitation popup
+    B->>B: ZIM.getInstance()?.destroy()
+    B->>A: callAccept
+    ZIM->>A: ZIMEventHandler.onCallInvitationAccepted
+    B->>B: Close call invitation popup
+    B->>ZIM: ZIM.getInstance()?.destroy()
+    B->>B: Mark offline call as received and accepted
+    B->>App: Activate current app
+    App->>App: Check if offline call flag is set on app launch
+    App->>App: Enter call if offline call flag is set
+    B->>A: callReject
+    ZIM->>A: ZIMEventHandler.onCallInvitationRejected
+    B->>B: Close call invitation popup
+    B->>ZIM: ZIM.getInstance()?.destroy()
+    B->>B: Mark offline call as received
+    B->>App: Activate current app
+    App->>App: Check if offline call flag is set on app launch
+    App->>App: Display online call invitation popup if offline call flag is set
