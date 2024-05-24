@@ -2,6 +2,13 @@
 
 Online/Offline call implemented using ZEGO SDK
 
+
+![run_gif](./assets/pics/run.gif)
+
+| Online Notification                                         | Offline Notification(iOS)                                             | Notification(Android)                                                         | In Call                                   |
+| ----------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |
+| ![online-notification](./../assets/pics/online-notification.jpg) | ![offline-notification-ios](./../assets/pics/offline-notification-ios.jpg) | ![offline-notification-android](./../assets/pics/offline-notification-android.jpg) | ![video-call](./../assets/pics/video-call.jpg) |
+    
 # How to run
 
 ## Config AppID & AppSign
@@ -253,12 +260,12 @@ If you encounter configuration issues, please consult our technical support or r
 
 - Events
   - ZIMService().event
-    - incomingInvitationReceivedEvent: The invited end receives the online call initiated by the inviting end.
-    - incomingInvitationCancelledEvent: The invited end receives the cancellation of the online call.
-    - outgoingInvitationAcceptedEvent: The inviting end receives the acceptance of the invitation by the invited end.
-    - outgoingInvitationRejectedEvent: The inviting end receives the rejection of the invitation by the invited end.
-    - incomingInvitationTimeoutEvent: The invited end receives the timeout of the online call.
-    - outgoingInvitationTimeoutEvent: The inviting end receives the timeout of the online call.
+    - incomingInvitationReceivedEvent: invitee receives a online call by the inviter.
+    - incomingInvitationCancelledEvent: invitee receives the cancellation of the online call by the inviter.
+    - incomingInvitationTimeoutEvent: invitee receives the timeout of the online call.
+    - outgoingInvitationAcceptedEvent: inviter receives the acceptance of the invitation by the invitee.
+    - outgoingInvitationRejectedEvent: inviter receives the rejection of the invitation by the invitee.
+    - outgoingInvitationTimeoutEvent: inviter receives the timeout of the online call.
 
 ## Offline Call
 
