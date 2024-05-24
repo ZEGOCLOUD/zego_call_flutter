@@ -178,7 +178,6 @@ class ZIMService {
   Future<ZegoZIMSendInvitationResult> sendInvitation({
     required List<String> invitees,
     required int timeout,
-    bool isAdvancedMode = false,
     String extendedData = '',
     ZegoZIMPushConfig? pushConfig,
   }) async {
@@ -194,9 +193,6 @@ class ZIMService {
     final config = ZIMCallInviteConfig()
       ..extendedData = extendedData
       ..timeout = timeout
-      ..mode = isAdvancedMode
-          ? ZIMCallInvitationMode.advanced
-          : ZIMCallInvitationMode.general
       ..pushConfig = toZIMPushConfig(pushConfig);
 
     return ZIM
@@ -352,7 +348,7 @@ class ZIMService {
   Future<bool> acceptInvitation({
     required String invitationID,
     String extendedData = '',
-  }) {
+  }) async {
     ZegoCallLogger.logInfo(
       'accept invitation, invitation id:$invitationID, extendedData:$extendedData',
       tag: 'call',

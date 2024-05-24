@@ -555,7 +555,6 @@ extension ZIMCallInvitationReceivedInfoSignalingExtension
   }
 }
 
-/// @nodoc
 /// Description:Offline push configuration.
 class ZegoZIMPushConfig {
   const ZegoZIMPushConfig({

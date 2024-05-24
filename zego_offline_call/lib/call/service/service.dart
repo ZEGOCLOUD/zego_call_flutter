@@ -16,7 +16,7 @@ import 'package:zego_offline_call/call/protocol.dart';
 import 'package:zego_offline_call/call/service/android.utils.dart';
 import 'package:zego_offline_call/call/service/data.dart';
 import 'package:zego_offline_call/call/service/defines.dart';
-import 'package:zego_offline_call/call/service/offline/android.dart';
+import 'package:zego_offline_call/call/service/offline/android/android.dart';
 import 'package:zego_offline_call/call/service/offline/data.dart';
 import 'package:zego_offline_call/call/service/offline/ios/ios.dart';
 import 'package:zego_offline_call/call/service/online/data.dart';
