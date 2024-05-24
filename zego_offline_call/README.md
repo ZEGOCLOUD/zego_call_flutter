@@ -2,8 +2,7 @@
 
 Online/Offline call implemented using ZEGO SDK
 
-
-![run_gif](./assets/pics/run.gif)
+![run_gif](./../assets/pics/run.gif)
 
 | Online Notification                                         | Offline Notification(iOS)                                             | Notification(Android)                                                         | In Call                                   |
 | ----------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |
