@@ -41,7 +41,6 @@ class ZegoLocalCallNotificationConfig {
   }
 }
 
-
 /// @nodoc
 class ZegoLocalNotificationChannelConfig {
   const ZegoLocalNotificationChannelConfig({

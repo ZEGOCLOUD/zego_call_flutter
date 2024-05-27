@@ -43,19 +43,22 @@ abstract class ZegoCallIncomingPlugin extends PlatformInterface {
   Future<void> addLocalCallNotification(
     ZegoLocalCallNotificationConfig config,
   ) {
-    throw UnimplementedError('addLocalCallNotification has not been implemented.');
+    throw UnimplementedError(
+        'addLocalCallNotification has not been implemented.');
   }
 
   /// createNotificationChannel
   Future<void> createNotificationChannel(
     ZegoLocalNotificationChannelConfig config,
   ) {
-    throw UnimplementedError('createNotificationChannel has not been implemented.');
+    throw UnimplementedError(
+        'createNotificationChannel has not been implemented.');
   }
 
   /// dismissAllNotifications
   Future<void> dismissAllNotifications() {
-    throw UnimplementedError('dismissAllNotifications has not been implemented.');
+    throw UnimplementedError(
+        'dismissAllNotifications has not been implemented.');
   }
 
   /// activeAppToForeground
@@ -64,6 +67,7 @@ abstract class ZegoCallIncomingPlugin extends PlatformInterface {
   }
 
   Future<void> requestDismissKeyguard() {
-    throw UnimplementedError('requestDismissKeyguard has not been implemented.');
+    throw UnimplementedError(
+        'requestDismissKeyguard has not been implemented.');
   }
 }

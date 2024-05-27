@@ -1,4 +1,4 @@
-library zego_uikit_prebuilt_call;
+library zego_callkit_incoming;
 
 export 'defines.dart';
 export 'plugin.dart';

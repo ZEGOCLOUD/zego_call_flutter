@@ -60,7 +60,8 @@ class ZegoCallIncomingPluginImpl extends ZegoCallIncomingPlugin {
 
     var isAppRunning = false;
     try {
-      isAppRunning = await methodChannel.invokeMethod<bool?>('checkAppRunning') ?? false;
+      isAppRunning =
+          await methodChannel.invokeMethod<bool?>('checkAppRunning') ?? false;
     } on PlatformException catch (e) {
       debugPrint('Failed to check app running: $e.');
     }
@@ -97,7 +98,8 @@ class ZegoCallIncomingPluginImpl extends ZegoCallIncomingPlugin {
 
       /// set buttons callback
       methodChannel.setMethodCallHandler((call) async {
-        debugPrint('MethodCallHandler, method:${call.method}, arguments:${call.arguments}.');
+        debugPrint(
+            'MethodCallHandler, method:${call.method}, arguments:${call.arguments}.');
 
         switch (call.method) {
           case 'onNotificationAccepted':

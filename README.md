@@ -7,10 +7,16 @@ Online/Offline call implemented using ZEGO SDK
 - flutter_dialpad-1.0.5
 
   call dialpad from [pub.dev](https://pub.dev/packages/flutter_dialpad)
+
 - zego_callkit_incoming
 
   plugin library of android notification
-- zego_offline_call
+
+- zego_push
+
+  plugin library of push
+
+- zego_call
 
   App project, online/offline call
 
@@ -30,13 +36,13 @@ Online/Offline call implemented using ZEGO SDK
 
  - Go to [ZEGOCLOUD Admin Console](https://console.zegocloud.com/) to create a UIKit project.
  - Get the `AppID` and `AppSign` of the project
- - Config `yourSecretID` and `yourSecretAppSign` in **zego_offline_call/lib/app/constants.dart**
+ - Config `yourSecretID` and `yourSecretAppSign` in **zego_call/lib/app/constants.dart**
 
 ## Config offline call
 
 If you encounter configuration issues, please consult our technical support or refer to this [article](https://www.zegocloud.com/docs/uikit/callkit-flutter/quick-start-(with-call-invitation))
 
-> When you get the resource id from the following steps, you should configure it to `offlineResourceID` in **zego_offline_call/lib/call/constants.dart**
+> When you get the resource id from the following steps, you should configure it to `offlineResourceID` in **zego_call/lib/call/constants.dart**
 
 - android
   

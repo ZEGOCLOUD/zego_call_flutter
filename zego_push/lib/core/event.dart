@@ -1,0 +1,3 @@
+class ZegoPushEvent {
+  ZegoPushEvent();
+}

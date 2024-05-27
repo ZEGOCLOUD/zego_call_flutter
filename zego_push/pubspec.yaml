@@ -1,0 +1,26 @@
+name: zego_push
+description: "A new Flutter package project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 0.0.1
+
+environment:
+  sdk: ">=2.16.2 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_logs: ^2.1.12
+  zego_zim: 2.13.1
+  zego_zpns: 2.6.0+2
+  zego_callkit: 1.0.0+2
+  zego_callkit_incoming:
+    path: ./../zego_callkit_incoming
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  import_sorter: ^4.6.0  # run 'flutter pub run import_sorter:main'
+
+flutter:
