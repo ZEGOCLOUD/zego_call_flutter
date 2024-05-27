@@ -58,7 +58,7 @@ class ZegoCallServiceOfflineMixinImpl {
         ) ??
         true;
     final zimCallID = prefs.getString(
-          OfflineCallCacheKey.cacheOfflineZIMCallIDKey,
+          OfflineCallCacheKey.cacheOfflineCallZIMIDKey,
         ) ??
         '';
     final requestProtocolJson = prefs.getString(
@@ -76,7 +76,7 @@ class ZegoCallServiceOfflineMixinImpl {
 
     if (zimCallID.isNotEmpty && requestProtocolJson.isNotEmpty) {
       prefs.remove(OfflineCallCacheKey.cacheOfflineZIMCallAcceptKey);
-      prefs.remove(OfflineCallCacheKey.cacheOfflineZIMCallIDKey);
+      prefs.remove(OfflineCallCacheKey.cacheOfflineCallZIMIDKey);
       prefs.remove(OfflineCallCacheKey.cacheOfflineCallProtocolKey);
 
       final protocol =

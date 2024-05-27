@@ -9,7 +9,7 @@ const androidSoundFileName = 'call';
 
 class OfflineCallCacheKey {
   /// zim ID of offline call
-  static String cacheOfflineZIMCallIDKey = 'cache_offline_zim_call_id_key';
+  static String cacheOfflineCallZIMIDKey = 'cache_offline_call_zim_id_key';
 
   /// how to active the app in offline notification, click the Agree button or
   /// click the blank area.

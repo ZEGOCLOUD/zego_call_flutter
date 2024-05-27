@@ -103,7 +103,7 @@ Future<void> onBackgroundMessageReceived(ZPNsMessage message) async {
               true,
             );
             prefs.setString(
-              OfflineCallCacheKey.cacheOfflineZIMCallIDKey,
+              OfflineCallCacheKey.cacheOfflineCallZIMIDKey,
               zimCallID,
             );
             prefs.setString(
@@ -160,7 +160,7 @@ Future<void> onBackgroundMessageReceived(ZPNsMessage message) async {
               false,
             );
             prefs.setString(
-              OfflineCallCacheKey.cacheOfflineZIMCallIDKey,
+              OfflineCallCacheKey.cacheOfflineCallZIMIDKey,
               zimCallID,
             );
             prefs.setString(
