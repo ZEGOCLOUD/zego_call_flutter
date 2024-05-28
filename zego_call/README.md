@@ -149,15 +149,15 @@ If you encounter configuration issues, please consult our technical support or r
 > Therefore, the following processing needs to be done:
 >
 > - offline event handler be called
->   - init push service: `ZegoPushService().init`
+>   - init push service: `ZegoPushService().init()`
 >   - Listen for cancel events: `ZegoPushService().zimEvent.incomingInvitationCancelledEvent`
 >     - Destroy the engine: `ZegoPushService().uninit()`
 > - Accept the call
->   - Accept the call: `ZegoPushService().accept`
+>   - Accept the call: `ZegoPushService().accept()`
 >   - Cache the call information and the acceptance mark, and check if there is a corresponding cache when the app starts, if so, directly enter the call
 >   - Destroy the engine: `ZegoPushService().uninit()`
 > - Reject the call
->   - Reject the call: `ZegoPushService().refuse`
+>   - Reject the call: `ZegoPushService().refuse()`
 >   - Destroy the engine: `ZegoPushService().uninit()`
 > - Click the blank area to wake up
 >   - Cache the call information, and check if there is a corresponding cache when the app starts, if so, treat it as an online call and pop up the online invitation
@@ -170,7 +170,7 @@ If you encounter configuration issues, please consult our technical support or r
 > Therefore, only the following processing needs to be done:
 >
 > - Listen for the accept call event: `ZegoPushService().iOSCallKitEvent.callkitPerformAnswerCallActionEvent`
->   - Accept the call: `ZegoPushService().accept`
+>   - Accept the call: `ZegoPushService().accept()`
 > - Listen for the reject call event: `ZegoPushService().iOSCallKitEvent.callkitPerformEndCallActionEvent`
 >   - Already in a call (triggered by clicking the hang up button on the large screen): `ZegoUIKitPrebuiltCallController().hangUp`
->   - Not in a call, reject the call: `ZegoPushService().refuse`
+>   - Not in a call, reject the call: `ZegoPushService().refuse()`
