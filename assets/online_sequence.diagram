@@ -1,15 +1,14 @@
 sequenceDiagram
     participant A
+    participant ZegoPushService
     participant B
-    A->>B: callinvite(protocol with config. extendedData)
-    B->>B: ZIMEventHandler.onCallInvitationReceived(parse event.extendedData as protocol)
+    A->>ZegoPushService: callinvite(protocol with config. extendedData)
+    ZegoPushService->>B: zimEvent.incomingInvitationReceivedEvent(parse event.extendedData as protocol)
     B->>B: Display call invitation popup
-    A->>A: ZIMEventHandler.onCallInvitationAccepted
-    A->>A: ZIMEventHandler.onCallInvitationRejected
-    A->>B: callCancel
-    B->>B: ZIMEventHandler.onCallInvitationCancelled
+    A->>ZegoPushService: callCancel
+    ZegoPushService->>B: zimEvent.incomingInvitationCancelledEvent
     B->>B: Close call invitation popup
-    B->>A: callAccept
-    A->>A: ZIMEventHandler.onCallInvitationAccepted
-    B->>A: callReject
-    A->>A: ZIMEventHandler.onCallInvitationRejected
+    B->>ZegoPushService: callAccept
+    ZegoPushService->>A: zimEvent.outgoingInvitationAcceptedEvent
+    B->>ZegoPushService: callReject
+    ZegoPushService->>A: zimEvent.outgoingInvitationRejectedEvent

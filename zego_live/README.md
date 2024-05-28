@@ -2,11 +2,7 @@
 
 Online/Offline call implemented using ZEGO SDK
 
-![run_gif](./../assets/pics/run.gif)
-
-| Online Notification                                         | Offline Notification(iOS)                                             | Notification(Android)                                                         | In Call                                   |
-| ----------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |
-| ![online-notification](./../assets/pics/online-notification.jpg) | ![offline-notification-ios](./../assets/pics/offline-notification-ios.jpg) | ![offline-notification-android](./../assets/pics/offline-notification-android.jpg) | ![video-call](./../assets/pics/video-call.jpg) |
+![run_gif](./../assets/pics/demo-live.gif)
     
 # How to run
 
@@ -76,62 +72,24 @@ If you encounter configuration issues, please consult our technical support or r
 │       ├── home_page.dart
 │       ├── login_page.dart
 │       └── home
-│           ├── contacts.dart
-│           ├── dialpad.dart
-│           ├── personal.dart
-│           └── recents.dart
-├── call: Call-related logic
-│   ├── constants.dart
-│   ├── prebuilt_call_route.dart: Jump to zego_uikit_prebuilt_call widget
-│   ├── protocol.dart: Call invitation protocol
-│   ├── components: Encapsulation of call components
-│   │   ├── calling_page.dart: Calling Widget (inviter)
-│   │   ├── online_invitation_notify.dart: Online invitation notification (invitee)
-│   │   └── buttons
-│   │       ├── send_call_button.dart: Call invitation button (for inviter)
-│   │       ├── cancel_call_button.dart: Cancel call button (for inviter)
-│   │       ├── accept_call_button.dart: Accept call button (for invitee)
-│   │       └── reject_call_button.dart: Reject call button (for invitee)
-│   └── service: Encapsulation of call service
-│       ├── data.dart
-│       ├── defines.dart
-│       ├── service.dart
-│       ├── android.utils.dart
-│       └── offline: Offline-related logic
-│       │   ├── android.dart: Android offline-related logic
-│       │   ├── data.dart
-│       │   ├── mixin.dart
-│       │   ├── android: Android offline-related logic
-│       │   │   ├── android.dart
-│       │   │   └── events.dart: Android offline callback
-│       │   └── ios: iOS offline-related logic
-│       │       ├── ios.dart
-│       │       ├── data.dart
-│       │       ├── defines.dart
-│       │       └── events.dart: iOS offline callback
-│       └── online: Online-related logic
-│           ├── data.dart
-│           ├── events.dart
-│           ├── mixin.dart
-│           └── popups.dart
-└── core
-    ├── defines.dart
-    ├── protocol.dart
-    ├── callkit: Zego_callkit APIs encapsulation
-    │   ├── data.dart
-    │   ├── defines.dart
-    │   ├── events.dart
-    │   └── service.dart
-    ├── zim: Zego_zim APIs encapsulation
-    │   ├── data.dart
-    │   ├── defines.dart
-    │   ├── events.dart
-    │   └── service.dart
-    └── zpns: Zego_zpns APIs encapsulation
+│           ├── group.dart
+│           ├── home.dart
+│           ├── lives.dart
+│           └── personal.dart
+└── live: Live-related logic
+    ├── constants.dart
+    ├── prebuilt_live_route.dart: Jump to zego_uikit_prebuilt_live_streaming widget
+    ├── protocol.dart: Call invitation protocol
+    └── service: Encapsulation of call service
         ├── data.dart
         ├── defines.dart
-        ├── events.dart
-        └── service.dart
+        ├── service.dart
+        ├── android.utils.dart
+        └── offline: Offline-related logic
+            ├── data.dart
+            ├── mixin.dart
+            └── android: Android offline-related logic
+                └── events.dart: Android offline callback
 ```
 
 ## Online Call
@@ -185,13 +143,13 @@ If you encounter configuration issues, please consult our technical support or r
 > ```
 >
 > - extendedData: external data, which will be attached to the invitation event received by the invitee. and you can set your custom request protocol here.
->   >   - In the online invitation callback，value is in the ZegoZIMIncomingInvitationReceivedEvent.extendedData parameter of the incomingInvitationReceivedEvent event
->   - In the offline invitation callback
->     >     - android: in the ZPNsMessage.extras['payload'] of the onBackgroundMessageReceived(ZPNsMessage)
->     - iOS: in the extras['payload'] of the onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
+    >   >   - In the online invitation callback，value is in the ZegoZIMIncomingInvitationReceivedEvent.extendedData parameter of the incomingInvitationReceivedEvent event
+    >   - In the offline invitation callback
+          >     >     - android: in the ZPNsMessage.extras['payload'] of the onBackgroundMessageReceived(ZPNsMessage)
+          >     - iOS: in the extras['payload'] of the onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
 > - pushConfig: If this push needs to support offline push, this parameter should be configured. After configuration,
->   >   - android: Receive offline callback in onBackgroundMessageReceived(ZPNsMessage)
->   - iOS: Receive offline callback in onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
+    >   >   - android: Receive offline callback in onBackgroundMessageReceived(ZPNsMessage)
+    >   - iOS: Receive offline callback in onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
 
 - ZIMService().cancelInvitation:
 
@@ -223,13 +181,13 @@ If you encounter configuration issues, please consult our technical support or r
 > ```
 >
 > - extendedData: external data, which will be attached to the invitation canceled event received by the invitee. and you can set your custom request protocol(with cancel reason) here.
->   >   - In the online invitation callback，value is in the ZegoZIMIncomingInvitationCancelledEvent.extendedData parameter of the incomingInvitationCancelledEvent event
->   - In the offline invitation callback
->     >     - android: in the ZPNsMessage.extras['payload'] of the onBackgroundMessageReceived(ZPNsMessage)
->     - iOS: in the extras['payload'] of the onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
+    >   >   - In the online invitation callback，value is in the ZegoZIMIncomingInvitationCancelledEvent.extendedData parameter of the incomingInvitationCancelledEvent event
+    >   - In the offline invitation callback
+          >     >     - android: in the ZPNsMessage.extras['payload'] of the onBackgroundMessageReceived(ZPNsMessage)
+          >     - iOS: in the extras['payload'] of the onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
 > - pushConfig: If this push needs to support offline push, this parameter should be configured. After configuration,
->   >   - android: Receive offline callback in onBackgroundMessageReceived(ZPNsMessage)
->   - iOS: Receive offline callback in onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
+    >   >   - android: Receive offline callback in onBackgroundMessageReceived(ZPNsMessage)
+    >   - iOS: Receive offline callback in onIncomingPushReceived(Map<dynamic, dynamic> extras, UUID uuid)
 
 - ZIMService().acceptInvitation:
 
@@ -288,21 +246,21 @@ Use `zego_callkit_incoming` to display a system notification
 > Therefore, the following processing needs to be done:
 >
 > - offline event handler be called
->   - Start the ZIM engine, log in (remember, the following processing cannot log out, otherwise you will not receive offline anymore, because the account has logged out)
+    >   - Start the ZIM engine, log in (remember, the following processing cannot log out, otherwise you will not receive offline anymore, because the account has logged out)
 >   - Activate offline settings: `ZPNSService().enableOfflineNotify`
 >   - Listen for cancel events: `ZIMService().event.incomingInvitationCancelledEvent`
->     - Close the notification: `ZegoCallIncomingPlugin.instance.dismissAllNotifications`
+      >     - Close the notification: `ZegoCallIncomingPlugin.instance.dismissAllNotifications`
 >     - Destroy the engine: `ZIMService().uninit()`
 > - Accept the call
->   - Accept the call: `ZIMService().acceptInvitation`
+    >   - Accept the call: `ZIMService().acceptInvitation`
 >   - Cache the call information and the acceptance mark, and check if there is a corresponding cache when the app starts, if so, directly enter the call
 >   - Activate the app, otherwise the app will not be woken up: `ZegoCallIncomingPlugin.instance.launchCurrentApp`
 >   - Destroy the engine: `ZIMService().uninit()`
 > - Reject the call
->   - Reject the call: `ZIMService().refuseInvitation`
+    >   - Reject the call: `ZIMService().refuseInvitation`
 >   - Destroy the engine: `ZIMService().uninit()`
 > - Click the blank area to wake up
->   - Close the notification: `ZegoCallIncomingPlugin.instance.dismissAllNotifications`
+    >   - Close the notification: `ZegoCallIncomingPlugin.instance.dismissAllNotifications`
 >   - Cache the call information, and check if there is a corresponding cache when the app starts, if so, treat it as an online call and pop up the online invitation
 >   - Destroy the engine: `ZIMService().uninit()`
 
@@ -315,7 +273,7 @@ The built-in behavior of `zpns` will display a system notification
 > Therefore, only the following processing needs to be done:
 >
 > - Listen for the accept call event: `CallKitEventHandler.performAnswerCallAction`
->   - Accept the call: `ZIMService().acceptInvitation`
+    >   - Accept the call: `ZIMService().acceptInvitation`
 > - Listen for the reject call event: `CallKitEventHandler.performEndCallAction`
->   - Already in a call (triggered by clicking the hang up button on the large screen): `ZegoUIKitPrebuiltCallController().hangUp`
+    >   - Already in a call (triggered by clicking the hang up button on the large screen): `ZegoUIKitPrebuiltCallController().hangUp`
 >   - Not in a call, reject the call: `ZIMService().refuseInvitation`

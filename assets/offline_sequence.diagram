@@ -33,3 +33,56 @@ sequenceDiagram
     B->>App: Activate current app
     App->>App: Check if offline call flag is set on app launch
     App->>App: Display online call invitation popup if offline call flag is set
+
+--receive & cancel
+sequenceDiagram
+    participant A
+    participant ZegoPushService
+    participant B
+    A->>ZegoPushService: init
+    B->>ZegoPushService: init with offlineConfig
+    A->>ZegoPushService: send with pushConfig(protocol with extendedData and push payload)
+    ZegoPushService->>B: offline message handler
+    B->>B: Parse message extras[payload] as protocol
+    B->>B: Display call invitation popup
+    B->>ZegoPushService: init(only android)
+    A->>ZegoPushService: cancel
+    ZegoPushService->>B: zimEvent.incomingInvitationCancelledEvent
+    B->>B: ZegoPushService().uninit(only android)
+
+-- accept
+sequenceDiagram
+    participant A
+    participant ZegoPushService
+    participant B
+    participant App
+    B->>ZegoPushService: accept
+    ZegoPushService->>A: zimEvent.outgoingInvitationAcceptedEvent
+    B->>ZegoPushService: uninit(only android)
+    B->>B: Mark offline call as received and accepted
+    ZegoPushService->>App: active
+    App->>App: Check if offline call flag is set on app launch
+    App->>App: Enter call if offline call flag is set
+
+-- reject
+sequenceDiagram
+    participant A
+    participant ZegoPushService
+    participant B
+    participant App
+    B->>ZegoPushService: reject
+    ZegoPushService->>A: zimEvent.outgoingInvitationRejectedEvent
+    B->>ZegoPushService: uninit(only android)
+
+-- empty click active
+sequenceDiagram
+    participant A
+    participant ZegoPushService
+    participant B
+    participant App
+    B->>B: click empty area in notification
+    B->>ZegoPushService: uninit(only android)
+    B->>B: Mark offline call as received
+    ZegoPushService->>App: active
+    App->>App: Check if offline call flag is set on app launch
+    App->>App: show online call if flag is set

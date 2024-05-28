@@ -4,6 +4,7 @@ import 'package:zego_push/zego_push.dart';
 
 // Package imports:
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
+import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
 
 // Project imports:
 import 'package:zego_live/app/constants.dart';
@@ -45,8 +46,12 @@ Future<bool> _skipToLivePage(
           userID: currentUser.id,
           userName: currentUser.name,
           config: isHost
-              ? ZegoUIKitPrebuiltLiveStreamingConfig.host()
-              : ZegoUIKitPrebuiltLiveStreamingConfig.audience(),
+              ? ZegoUIKitPrebuiltLiveStreamingConfig.host(
+                  plugins: [ZegoUIKitSignalingPlugin()],
+                )
+              : ZegoUIKitPrebuiltLiveStreamingConfig.audience(
+                  plugins: [ZegoUIKitSignalingPlugin()],
+                ),
           events: isHost
               ? ZegoUIKitPrebuiltLiveStreamingEvents(
                   onStateUpdated: (ZegoLiveStreamingState state) {

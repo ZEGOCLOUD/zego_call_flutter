@@ -20,6 +20,7 @@ dependencies:
   flutter_logs: ^2.1.12
 
   zego_uikit_prebuilt_live_streaming: ^3.8.0
+  zego_uikit_signaling_plugin: ^2.7.6
   flutter_dialpad:
     path: ./../flutter_dialpad-1.0.5
   zego_push:
