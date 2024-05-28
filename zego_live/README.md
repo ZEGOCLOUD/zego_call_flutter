@@ -1,8 +1,8 @@
-# zego_call_flutter
+# zego_live
 
-Online/Offline call implemented using ZEGO SDK
+Offline notification implemented using ZEGO SDK
 
-![run_gif](./../assets/pics/demo-live.gif)
+![demo live](./../assets/pics/demo-live.gif)
     
 # How to run
 

@@ -1,8 +1,8 @@
-# zego_call_flutter
+# zego_call
 
 Online/Offline call implemented using ZEGO SDK
 
-![run_gif](./../assets/pics/demo-call.gif)
+![demo call](./../assets/pics/demo-call.gif)
 
 | Online Notification                                         | Offline Notification(iOS)                                             | Notification(Android)                                                         | In Call                                   |
 | ----------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |

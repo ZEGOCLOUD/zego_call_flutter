@@ -28,7 +28,13 @@ Online/Offline call implemented using ZEGO SDK
     | ----------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------- |
     | ![online-notification](./assets/pics/online-notification.jpg) | ![offline-notification-ios](./assets/pics/offline-notification-ios.jpg) | ![offline-notification-android](./assets/pics/offline-notification-android.jpg) | ![video-call](./assets/pics/video-call.jpg) |
 
-  
+- zego_live
+
+  App project, offline notification in live
+
+  - Effects:
+
+    ![run_gif](./assets/pics/demo-live.gif)
 
 # How to run
 
