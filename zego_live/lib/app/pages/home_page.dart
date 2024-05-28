@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 // Project imports:
-import 'package:zego_call/app/pages/home/contacts.dart';
-import 'package:zego_call/app/pages/home/dialpad.dart';
-import 'package:zego_call/app/pages/home/personal.dart';
-import 'package:zego_call/app/pages/home/recents.dart';
-import 'package:zego_call/call/service/service.dart';
+import 'package:zego_live/app/pages/home/group.dart';
+import 'package:zego_live/app/pages/home/home.dart';
+import 'package:zego_live/app/pages/home/personal.dart';
+import 'package:zego_live/app/pages/home/lives.dart';
+import 'package:zego_live/live/service/service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,30 +20,30 @@ class HomePageState extends State<HomePage> {
   final currentIndexNotifier = ValueNotifier<int>(0);
 
   final tabPages = [
-    const RecentCallsTab(),
-    const ContactsTab(),
-    const DialPadTab(),
+    const HomeTab(),
+    const LivesTab(),
+    const GroupTab(),
     const PersonalInfoTab(),
   ];
   final tabTitles = [
-    'Recent',
-    'Contacts',
-    'DialPad',
+    'Home',
+    'Lives',
+    'Group',
     'Personal',
   ];
-  int get recentTabIndex => 0;
-  int get contactsTabIndex => 1;
-  int get dialPadTabIndex => 2;
+  int get homeTabIndex => 0;
+  int get livesTabIndex => 1;
+  int get groupTabIndex => 2;
   int get personalInfoTabIndex => 3;
 
   @override
   void initState() {
     super.initState();
 
-    currentIndexNotifier.value = dialPadTabIndex;
+    currentIndexNotifier.value = livesTabIndex;
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      ZegoCallService().checkHasPendingOfflineCall();
+      ZegoLiveService().checkHasPendingOfflineLive();
     });
   }
 
@@ -72,16 +72,16 @@ class HomePageState extends State<HomePage> {
               },
               items: [
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.call),
-                  label: tabTitles[recentTabIndex],
+                  icon: const Icon(Icons.home),
+                  label: tabTitles[homeTabIndex],
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.contacts),
-                  label: tabTitles[contactsTabIndex],
+                  icon: const Icon(Icons.live_tv),
+                  label: tabTitles[livesTabIndex],
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.dialpad),
-                  label: tabTitles[dialPadTabIndex],
+                  icon: const Icon(Icons.group),
+                  label: tabTitles[groupTabIndex],
                 ),
                 BottomNavigationBarItem(
                   icon: const Icon(Icons.person),

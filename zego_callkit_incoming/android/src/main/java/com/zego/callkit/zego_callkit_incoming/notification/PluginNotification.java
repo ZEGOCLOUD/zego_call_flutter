@@ -74,24 +74,33 @@ public class PluginNotification {
         rejectIntent.setAction(Defines.ACTION_REJECT);
         PendingIntent rejectPendingIntent = PendingIntent.getBroadcast(context, 0, rejectIntent, flags);
 
-        RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.layout_small_notification);
-        contentView.setTextViewText(R.id.tvDecline, rejectButtonText);
-        contentView.setTextViewText(R.id.tvAccept, acceptButtonText);
-        contentView.setTextViewText(R.id.tvTitle, title);
-        contentView.setTextViewText(R.id.tvBody, body);
-        contentView.setOnClickPendingIntent(R.id.llAccept, acceptPendingIntent);
-        contentView.setOnClickPendingIntent(R.id.llDecline, rejectPendingIntent);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelID)
-                .setContent(contentView)
-                .setContentIntent(clickPendingIntent)
-                .setDeleteIntent(cancelPendingIntent)
-                .setFullScreenIntent(fullscreenPendingIntent, true)
-                .setSound(retrieveSoundResourceUri(context, soundSource))
-                .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setAutoCancel(true)
-                .setOngoing(true)
-                .setStyle(new NotificationCompat.DecoratedCustomViewStyle());
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelID);
+        if (StringUtils.isNullOrEmpty(acceptButtonText) && StringUtils.isNullOrEmpty(rejectButtonText)) {
+            RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.layout_notification);
+            contentView.setTextViewText(R.id.tvTitle, title);
+            contentView.setTextViewText(R.id.tvBody, body);
+
+            builder.setContent(contentView);
+        } else {
+            RemoteViews callContentView = new RemoteViews(context.getPackageName(), R.layout.layout_call_small_notification);
+            callContentView.setTextViewText(R.id.tvDecline, rejectButtonText);
+            callContentView.setTextViewText(R.id.tvAccept, acceptButtonText);
+            callContentView.setTextViewText(R.id.tvTitle, title);
+            callContentView.setTextViewText(R.id.tvBody, body);
+            callContentView.setOnClickPendingIntent(R.id.llAccept, acceptPendingIntent);
+            callContentView.setOnClickPendingIntent(R.id.llDecline, rejectPendingIntent);
+
+            builder.setContent(callContentView);
+        }
+        builder.setContentIntent(clickPendingIntent)
+               .setDeleteIntent(cancelPendingIntent)
+               .setFullScreenIntent(fullscreenPendingIntent, true)
+               .setSound(retrieveSoundResourceUri(context, soundSource))
+               .setPriority(NotificationCompat.PRIORITY_MAX)
+               .setAutoCancel(true)
+               .setOngoing(true)
+               .setStyle(new NotificationCompat.DecoratedCustomViewStyle());
 
         if (isVibrate) {
             builder.setVibrate(new long[]{0});
